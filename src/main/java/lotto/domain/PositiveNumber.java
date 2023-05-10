@@ -12,6 +12,10 @@ public class PositiveNumber {
         this.value = value;
     }
 
+    public static PositiveNumber of(int value) {
+        return new PositiveNumber(value);
+    }
+
     public boolean isLessThan(PositiveNumber other) {
         return this.value > other.value;
     }
@@ -20,6 +24,10 @@ public class PositiveNumber {
         if (value < 0) {
             throw new IllegalArgumentException(String.format("음수를 가질수 없습니다. 값: %d", value));
         }
+    }
+
+    public int value() {
+        return value;
     }
 
     @Override

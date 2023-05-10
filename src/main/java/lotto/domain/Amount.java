@@ -29,6 +29,10 @@ public class Amount {
         return this.value.divide(other);
     }
 
+    public PositiveNumber divide(int amount) {
+        return this.divide(new PositiveNumber(amount));
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

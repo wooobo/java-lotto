@@ -20,6 +20,10 @@ public class LottoNumber {
         return this.equals(other);
     }
 
+    public int value() {
+        return value;
+    }
+
     private void validRange(int value) {
         final int MIN = 1;
         final int MAX = 45;

@@ -1,6 +1,8 @@
 package lotto.domain;
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -42,6 +44,20 @@ public class Lotto {
             throw new IllegalArgumentException(
                 String.format("로또 묶음은 %d개 입니다. 현재값 : %d", BUNDLE_COUNT, values.size()));
         }
+    }
+
+    @Override
+    public String toString() {
+        List<LottoNumber> sortedNumbers = values.stream()
+            .sorted(Comparator.comparingInt(LottoNumber::value))
+            .collect(Collectors.toList());
+
+        String numbers = sortedNumbers.stream()
+            .map(LottoNumber::value)
+            .map(String::valueOf)
+            .collect(Collectors.joining(", "));
+
+        return "[" + numbers + "]";
     }
 
     @Override

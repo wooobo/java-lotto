@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -42,6 +45,25 @@ public class Lottos {
             .mapToInt(Integer::intValue)
             .limit(BUNDLE_SIZE)
             .toArray();
+    }
+
+    public static Lottos of(List<Lotto> values) {
+        return new Lottos(values);
+    }
+
+    public Ranks ranks(Lotto lastLotto) {
+        return Ranks.of(
+            values.stream()
+                .map(it -> Rank.valueOf(it.matchCount(lastLotto)))
+                .collect(Collectors.toList())
+        );
+    }
+
+    public BigDecimal rate(BigInteger totalPrize) {
+        BigInteger totalPurchaseAmount = BigInteger.valueOf(values.size())
+            .multiply(BigInteger.valueOf(LOTTO_PRICE));
+        return new BigDecimal(totalPrize).divide(new BigDecimal(totalPurchaseAmount), 2,
+            RoundingMode.HALF_UP);
     }
 
     public int size() {

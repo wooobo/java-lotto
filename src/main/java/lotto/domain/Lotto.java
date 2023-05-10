@@ -46,6 +46,12 @@ public class Lotto {
         }
     }
 
+    public int matchCount(Lotto other) {
+        return (int) values.stream()
+            .filter(other.values::contains)
+            .count();
+    }
+
     @Override
     public String toString() {
         List<LottoNumber> sortedNumbers = values.stream()

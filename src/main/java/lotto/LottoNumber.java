@@ -21,8 +21,8 @@ public class LottoNumber {
     }
 
     private void validRange(int value) {
-        int MIN = 1;
-        int MAX = 45;
+        final int MIN = 1;
+        final int MAX = 45;
 
         if (value < MIN || value > MAX) {
             throw new IllegalArgumentException(

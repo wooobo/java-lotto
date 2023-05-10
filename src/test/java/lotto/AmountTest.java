@@ -2,6 +2,7 @@ package lotto;
 
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
+import lotto.domain.Amount;
 import org.junit.jupiter.api.Test;
 
 public class AmountTest {

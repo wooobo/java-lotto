@@ -3,6 +3,7 @@ package lotto;
 
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
+import lotto.domain.Lotto;
 import org.junit.jupiter.api.Test;
 
 public class LottoTest {

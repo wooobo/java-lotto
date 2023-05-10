@@ -8,15 +8,7 @@ import lotto.domain.Ranks;
 
 public class Stage3 {
 
-    private final Lottos lottos;
-    private final Lotto lastLotto;
-
-    public Stage3(Lottos lottos, Lotto lastLotto) {
-        this.lottos = lottos;
-        this.lastLotto = lastLotto;
-    }
-
-    public void run() {
+    public static void run(Lottos lottos, Lotto lastLotto) {
         Ranks ranks = lottos.ranks(lastLotto);
 
         System.out.println("당첨 통계\n---------");

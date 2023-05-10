@@ -17,9 +17,7 @@ public class Stage3Test {
             Lotto.of(new int[]{10, 12, 13, 14, 15, 16})
         ));
         Lottos lottos = Lottos.of(values);
-        Stage3 stage = new Stage3(lottos, firstLotto);
-
-        stage.run();
+        Stage3.run(lottos, firstLotto);
     }
 
 }

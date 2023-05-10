@@ -14,6 +14,6 @@ public class LottoApplication {
         Lottos lottos = new Stage1().run(new ScannerInt());
         Lotto lastLotto = new Stage2().run(new ScannerString());
 
-        new Stage3(lottos, lastLotto).run();
+        Stage3.run(lottos, lastLotto);
     }
 }

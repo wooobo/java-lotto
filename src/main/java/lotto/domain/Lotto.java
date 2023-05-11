@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
@@ -32,6 +33,20 @@ public class Lotto {
 
         return new Lotto(values, numbers.length);
     }
+
+    public static Lotto auto() {
+        return Lotto.of(autoNumbers());
+    }
+
+    private static int[] autoNumbers() {
+        List<Integer> numbers = Arrays.asList(LottoNumber.RANGE_NUMBERS);
+        Collections.shuffle(numbers);
+        return numbers.stream()
+            .mapToInt(Integer::intValue)
+            .limit(BUNDLE_COUNT)
+            .toArray();
+    }
+
 
     private void validateNonDuplicate(Set<LottoNumber> values, int validSize) {
         if (values.size() != validSize) {

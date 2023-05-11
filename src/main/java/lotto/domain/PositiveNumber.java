@@ -26,6 +26,10 @@ public class PositiveNumber {
         }
     }
 
+    public PositiveNumber divide(PositiveNumber other) {
+        return new PositiveNumber(value / other.value);
+    }
+
     public int value() {
         return value;
     }
@@ -47,7 +51,4 @@ public class PositiveNumber {
         return Objects.hash(value);
     }
 
-    public PositiveNumber divide(PositiveNumber other) {
-        return new PositiveNumber(value / other.value);
-    }
 }

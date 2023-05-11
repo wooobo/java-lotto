@@ -1,10 +1,18 @@
 package lotto.domain;
 
 import java.util.Objects;
+import java.util.stream.IntStream;
 
 public class LottoNumber {
 
+    private static final int MIN = 1;
+    private static final int MAX = 45;
+    public static final Integer[] RANGE_NUMBERS = IntStream.rangeClosed(MIN, MAX)
+        .boxed()
+        .toArray(Integer[]::new);
+
     private final int value;
+
 
     public LottoNumber(int value) {
         validRange(value);
@@ -25,9 +33,6 @@ public class LottoNumber {
     }
 
     private void validRange(int value) {
-        final int MIN = 1;
-        final int MAX = 45;
-
         if (value < MIN || value > MAX) {
             throw new IllegalArgumentException(
                 String.format("로또 범위에서 벗어났습니다. %d 부터 %d까지", MIN, MAX));

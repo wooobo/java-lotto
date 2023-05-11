@@ -26,7 +26,6 @@ public enum Rank {
             .orElse(DEFAULT);
     }
 
-
     public static List<Rank> prizeRanks() {
         return Arrays.stream(values())
             .filter(it -> it.amount > 0)

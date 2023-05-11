@@ -1,6 +1,9 @@
 package lotto.domain;
 
+import java.util.Map;
 import java.util.Objects;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class LottoNumber {
@@ -10,9 +13,11 @@ public class LottoNumber {
     public static final Integer[] RANGE_NUMBERS = IntStream.rangeClosed(MIN, MAX)
         .boxed()
         .toArray(Integer[]::new);
+    private static final Map<Integer, LottoNumber> LOTTO_NUMBERS = IntStream.rangeClosed(MIN, MAX)
+        .mapToObj(LottoNumber::new)
+        .collect(Collectors.toMap(lottoNumber -> lottoNumber.value, Function.identity()));
 
     private final int value;
-
 
     public LottoNumber(int value) {
         validRange(value);
@@ -20,7 +25,12 @@ public class LottoNumber {
         this.value = value;
     }
 
-    public static LottoNumber of(int value) {
+    public static LottoNumber cacheOf(int value) {
+        LottoNumber lottoNumber = LOTTO_NUMBERS.get(value);
+        if (lottoNumber != null) {
+            return lottoNumber;
+        }
+
         return new LottoNumber(value);
     }
 

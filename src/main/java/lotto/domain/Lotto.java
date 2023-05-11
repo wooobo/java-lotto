@@ -28,7 +28,7 @@ public class Lotto {
 
     public static Lotto of(int[] numbers) {
         Set<LottoNumber> values = Arrays.stream(numbers)
-            .mapToObj(LottoNumber::of)
+            .mapToObj(LottoNumber::cacheOf)
             .collect(Collectors.toSet());
 
         return new Lotto(values, numbers.length);
